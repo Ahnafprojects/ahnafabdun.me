@@ -147,7 +147,7 @@ const Navbar = () => {
               })}
             </div>
 
-            {/* Minimal CTA - Connect with me (LinkedIn) */}
+            {/* Minimal CTA - Connect with me (LinkedIn)yayaya */}
             <motion.a
               href="https://www.linkedin.com/in/muhammad-ahnaf-596708320"
               target="_blank"

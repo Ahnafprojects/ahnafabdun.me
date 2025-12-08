@@ -64,7 +64,7 @@ const Hero = () => {
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 flex items-center justify-center px-4 sm:px-8 md:px-16 relative z-10">
+      <div className="flex-1 flex items-center justify-center px-4 sm:px-8 md:px-16 pt-24 sm:pt-8 relative z-10">
         <div className="container mx-auto max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr),550px] gap-8 lg:gap-8 items-center">
             {/* Text Content */}

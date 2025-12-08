@@ -3,10 +3,7 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { Badge } from '@/components/ui/badge';
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '../ui/button';
-import { Github, ExternalLink, Globe, Database, Code2, ArrowRight, Eye } from 'lucide-react';
+import { Github, Globe, Database, Code2, ArrowRight, Eye } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 // Definisikan tipe untuk setiap project
@@ -213,7 +210,7 @@ const Projects = () => {
                       transition={{ duration: 0.6, delay: 0.5 }}
                       viewport={{ once: true }}
                     >
-                      {project.tags.slice(0, 4).map((tag, tagIndex) => (
+                      {project.tags.slice(0, 4).map((tag) => (
                         <span 
                           key={tag}
                           className="text-xs text-gray-500 border border-gray-800 px-3 py-1 font-light tracking-wide uppercase"

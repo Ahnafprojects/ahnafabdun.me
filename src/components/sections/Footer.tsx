@@ -7,7 +7,6 @@ import {
   Github,
   Linkedin,
   Mail,
-  Globe,
   ArrowUp,
   ExternalLink
 } from 'lucide-react';

@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unknown-property */
 'use client';
 import { useEffect, useRef, useState } from 'react';
 import { Canvas, extend, useFrame } from '@react-three/fiber';
@@ -69,16 +68,23 @@ export default function Lanyard({ position = [0, 0, 15], gravity = [0, -40, 0], 
 }
 function Band({ maxSpeed = 50, minSpeed = 0, scale = 2.5 }) {
   const band = useRef<THREE.Mesh>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const fixed = useRef<any>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const j1 = useRef<any>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const j2 = useRef<any>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const j3 = useRef<any>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const card = useRef<any>(null);
   const vec = new THREE.Vector3(),
     ang = new THREE.Vector3(),
     rot = new THREE.Vector3(),
     dir = new THREE.Vector3();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars
   const segmentProps = { type: 'dynamic', canSleep: true, colliders: 'ball', angularDamping: 4, linearDamping: 4 };
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const { nodes, materials } = useGLTF('/assets/lanyard/card.glb') as any;
   const texture = useTexture('/assets/lanyard/lanyard.png');
   const [curve] = useState(
@@ -139,7 +145,7 @@ function Band({ maxSpeed = 50, minSpeed = 0, scale = 2.5 }) {
       curve.points[2].copy(j1.current.lerped);
       curve.points[3].copy(fixed.current.translation());
       if (band.current && band.current.geometry && 'setPoints' in band.current.geometry) {
-        // @ts-ignore
+        // @ts-expect-error - MeshLineGeometry has setPoints method
         band.current.geometry.setPoints(curve.getPoints(32));
       }
       ang.copy(card.current.angvel());
@@ -171,17 +177,22 @@ function Band({ maxSpeed = 50, minSpeed = 0, scale = 2.5 }) {
             position={[0, -1.2, -0.05]}
             onPointerOver={() => setHovered(true)}
             onPointerOut={() => setHovered(false)}
-            onPointerUp={(e: any) => {
+            onPointerUp={(e: React.PointerEvent<THREE.Group>) => {
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
               if (e.target && 'releasePointerCapture' in e.target) {
-                (e.target as any).releasePointerCapture(e.pointerId);
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                (e.target as any).releasePointerCapture((e.nativeEvent as any).pointerId);
               }
               setDragged(null);
             }}
-            onPointerDown={(e: any) => {
+            onPointerDown={(e: React.PointerEvent<THREE.Group>) => {
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
               if (e.target && 'setPointerCapture' in e.target) {
-                (e.target as any).setPointerCapture(e.pointerId);
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                (e.target as any).setPointerCapture((e.nativeEvent as any).pointerId);
               }
-              setDragged(new THREE.Vector3().copy(e.point).sub(vec.copy(card.current.translation())));
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              setDragged(new THREE.Vector3().copy((e as any).point).sub(vec.copy(card.current.translation())));
             }}
           >
             {nodes.card && (
@@ -207,9 +218,9 @@ function Band({ maxSpeed = 50, minSpeed = 0, scale = 2.5 }) {
         </RigidBody>
       </group>
       <mesh ref={band}>
-        {/* @ts-ignore */}
+        {/* @ts-expect-error - Custom meshline component */}
         <meshLineGeometry />
-        {/* @ts-ignore */}
+        {/* @ts-expect-error - Custom meshline material */}
         <meshLineMaterial 
           color="#808080" 
           lineWidth={0.2}

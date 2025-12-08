@@ -4,8 +4,7 @@ import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import Navbar from '../common/Navbar';
 import Lanyard from '../3d/Lanyard';
-import { Button } from '../ui/button';
-import { ArrowDown, ArrowRight, Eye, Github } from 'lucide-react';
+import { ArrowRight, Eye, Github } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const Hero = () => {

@@ -18,7 +18,6 @@ import {
   MapPin,
   Phone,
   ArrowRight,
-  Globe,
   CheckCircle,
   XCircle,
   X

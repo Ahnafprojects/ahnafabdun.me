@@ -1,9 +1,10 @@
 'use client';
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageCircle, X, Send, Bot, User, Sparkles, ArrowUp } from 'lucide-react';
+import { MessageCircle, X, Send, Bot, User } from 'lucide-react';
 
 // Data lengkap tentang Muhammad Ahnaf untuk AI context
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const ahnafContext = `
 INFORMASI LENGKAP TENTANG MUHAMMAD AHNAF:
 
@@ -104,7 +105,7 @@ CATATAN PENTING:
 `;
 
 // Smart Local AI Response Generator (No API needed!)
-const generateAIResponse = async (message: string, conversationHistory: Message[]): Promise<string> => {
+const generateAIResponse = async (message: string): Promise<string> => {
   const msg = message.toLowerCase();
   const currentYear = new Date().getFullYear();
   const age = currentYear - 2006;
@@ -228,7 +229,7 @@ const AIAssistantChat = () => {
     setIsTyping(true);
 
     try {
-      const aiResponseText = await generateAIResponse(currentInput, [...messages, userMessage]);
+      const aiResponseText = await generateAIResponse(currentInput);
       
       const aiResponse: Message = {
         id: messages.length + 2,
@@ -238,7 +239,7 @@ const AIAssistantChat = () => {
       };
       
       setMessages(prev => [...prev, aiResponse]);
-    } catch (error) {
+    } catch {
       const errorResponse: Message = {
         id: messages.length + 2,
         text: "Maaf, saya mengalami kesulitan. Silakan coba lagi atau hubungi Ahnaf langsung di muhammadahnafworks@gmail.com",

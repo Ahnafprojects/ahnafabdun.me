@@ -7,7 +7,6 @@ import {
   Database, 
   Server, 
   Settings, 
-  MonitorSmartphone, 
   LayoutTemplate, 
   Terminal,
   Globe,
@@ -19,13 +18,6 @@ import {
 } from 'lucide-react';
 import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
-
-// Definisikan tipe untuk skill
-type Skill = {
-  name: string;
-  icon: React.ReactNode;
-  color?: string;
-};
 
 // Data skill yang dikategorikan dengan tema minimalis
 const skillCategories = [
@@ -185,12 +177,10 @@ const Skills = () => {
                     whileHover={{ x: 8 }}
                   >
                     <div className="text-gray-500 group-hover/skill:text-white transition-colors duration-300">
-                      {React.cloneElement(skill.icon as React.ReactElement, { 
-                        className: "h-4 w-4" 
-                      })}
-                    </div>
-                    
-                    {/* PENYESUAIAN 6: Mengecilkan nama skill di layar kecil */}
+                      {React.isValidElement(skill.icon) && React.cloneElement(skill.icon, {
+                        className: "h-4 w-4"
+                      } as React.Attributes)}
+                    </div>                    {/* PENYESUAIAN 6: Mengecilkan nama skill di layar kecil */}
                     <span className="text-sm sm:text-base text-gray-400 group-hover/skill:text-white font-light transition-colors duration-300 flex-1">
                       {skill.name}
                     </span>

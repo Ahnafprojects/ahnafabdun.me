@@ -15,8 +15,8 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Your Name - Professional Portfolio",
-  description: "A professional portfolio built with Next.js, Tailwind CSS, and Three.js",
+  title: "Muhammad Ahnaf Abdun | Professional Portfolio",
+  description: "  Welcome to the professional portfolio of Muhammad Ahnaf Abdun. Explore my projects, skills, and experience in web development.",
 };
 
 export default function RootLayout({
